@@ -1,5 +1,9 @@
-<div class="file-uploader">
-  <textarea class="form-control" id="inputFile">Drag file to upload</textarea>
-  <button type="button" class="btn btndefault"><i class="glyphicon glyphicon-plus"></i> Add File</button>
-</div>
+<form id="fileupload">
+  <textarea class="form-control" id="fileupload" placeholder="Drag file to upload"></textarea>
+  <span  class="btn btn-default">
+    <i class="glyphicon glyphicon-plus"></i>
+    <span>Add File</span>
+    <input type="file" name="files[]" multiple>
+  </span>
+</form>
 {{yield}}
