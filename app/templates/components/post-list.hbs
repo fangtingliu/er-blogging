@@ -1,13 +1,16 @@
 <div class="post">
   <h3>{{post.title}}</h3>
   <div class="post-type">
-    <span>Type:</span> {{post.type}}
+    <span>Category:</span> {{post.category}} - {{post.tags}}
   </div>
   <div class="post-date">
-    <span>Date:</span> {{post.date}}
+    <span>Date:</span> {{post.updatedAt}}
   </div>
-  <div class="post-description">
-    <span>description:</span> {{post.description}}
+  <div class="post-tags">
+
+  </div>
+  <div class="post-content">
+    {{post-content-shorten post.content}} ...
   </div>
 </div>
 {{yield}}

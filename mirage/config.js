@@ -9,8 +9,9 @@ export default function() {
         attributes: {
           title: 'First post',
           type: 'coding',
-          description: 'This is my first blog post. I am very excited!',
-          date: '02-11-2017'
+          summary: 'This is my first blog post. I am very excited!',
+          'updated-at': '02-11-2017',
+          tags: []
         }
       }, {
         type: 'posts',
@@ -18,8 +19,9 @@ export default function() {
         attributes: {
           title: 'Second post',
           type: 'coding',
-          description: 'This is my second blog post. I am very excited!',
-          date: '02-12-2017'
+          summary: 'This is my second blog post. I am very excited!',
+          'updated-at': '02-12-2017',
+          tags: []
         }
       }, {
         type: 'posts',
@@ -27,12 +29,19 @@ export default function() {
         attributes: {
           title: 'Third post',
           type: 'coding',
-          description: 'This is my third blog post. I am very excited!',
-          date: '02-13-2017'
+          summary: 'This is my third blog post. I am very excited!',
+          'updated-at': '02-13-2017',
+          tags: []
         }
       }]
     };
   });
+
+  this.post('/messages', function(db, request) {
+    const data = JSON.parse(request.requestBody);
+    console.log('data in mirage post messages: ', data)
+    return data;
+  })
   // These comments are here to help you get started. Feel free to delete them.
 
   /*
