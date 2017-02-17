@@ -1,0 +1,49 @@
+.posts {
+  padding-top: 20px;
+
+  .post-list {
+    height: 200px;
+    margin-top: 10px;
+    background-color: #f9ece0;
+    border-radius: 3px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+
+    .post-title {
+      padding-top: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .post-info {
+      .post-info-sec {
+        padding-left: 20px;
+      }
+
+    }
+  }
+
+  .post-content {
+    padding: 10px;
+    height: 60%;
+
+    .row {
+      margin: 0;
+      height: 100%;
+
+      .content-short {
+        float: left;
+        padding-left: 20px;
+        padding-top: 20px;
+      }
+
+      img {
+        float: left;
+        max-width: 100%;
+        max-height: 100%;
+        padding: 0;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+}

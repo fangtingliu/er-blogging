@@ -1,7 +1,17 @@
-<h1>Welcome!</h1>
 
-{{#each model as |postUnit|}}
-  {{post-list post=postUnit}}
-{{/each}}
+<div class="row home">
+  <div class="col-md-4 intro">
+    <div class="img-container">
+      <img src="/bigbuttblog.jpg">
+    </div>
+    <p>Welcome! I'm Ms.Coding. You will find lots articles from me or other awesome writers about coding and personal financing. Enjoy!</p>
+  </div>
+
+  <div class="col-md-8 posts">
+    {{#each model as |postUnit|}}
+    {{post-list post=postUnit}}
+    {{/each}}
+  </div>
+</div>
 
 {{outlet}}

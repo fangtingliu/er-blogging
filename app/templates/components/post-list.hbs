@@ -1,15 +1,17 @@
-<article class="post">
-  <h2>{{post.title}}</h2>
-  <div class="post-type">
-    <span>Category:</span> {{post.category}} - {{post.tags}} <em>{{post.updatedAt}}</em>
+<article class="post-list">
+  <h3 class="post-title"><em>{{post-text-shorten post.title "title"}}</em></h3>
+  <div class="post-info">
+    <em class="post-info-sec">{{post.updatedAt}} </em>
+    <span class="post-info-sec">Author: </span>
+    {{post.author}}
+    <span class="post-info-sec">Category: </span>
+    {{post.category}} - {{post.tags}}
   </div>
 
-  <div class="paragraphs">
+  <div class="post-content">
     <div class="row">
-      <div class="span4">
-        <img style="float:left" src={{post.image}} height="100" width="100">
-        <div class="content-heading">{{post-content-shorten post.content}}</div>
-      </div>
+      <img src={{post.image}}>
+      <div class="content-short col-md-10">{{post-text-shorten post.content "content"}} ...</div>
     </div>
   </div>
 </article>

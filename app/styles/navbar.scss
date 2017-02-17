@@ -1,0 +1,17 @@
+.navbar-default {
+  .navbar-brand {
+    color: lightcoral;
+  }
+
+  .navbar-brand:hover, .navbar-brand:focus{
+    color: hotpink;
+  }
+
+  .navbar-nav {
+    li {
+      a:hover, a:focus, a.active {
+        color: black;
+      }
+    }
+  }
+}
