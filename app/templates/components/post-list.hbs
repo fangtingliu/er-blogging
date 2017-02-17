@@ -1,16 +1,16 @@
-<div class="post">
-  <h3>{{post.title}}</h3>
+<article class="post">
+  <h2>{{post.title}}</h2>
   <div class="post-type">
-    <span>Category:</span> {{post.category}} - {{post.tags}}
+    <span>Category:</span> {{post.category}} - {{post.tags}} <em>{{post.updatedAt}}</em>
   </div>
-  <div class="post-date">
-    <span>Date:</span> {{post.updatedAt}}
-  </div>
-  <div class="post-tags">
 
+  <div class="paragraphs">
+    <div class="row">
+      <div class="span4">
+        <img style="float:left" src={{post.image}} height="100" width="100">
+        <div class="content-heading">{{post-content-shorten post.content}}</div>
+      </div>
+    </div>
   </div>
-  <div class="post-content">
-    {{post-content-shorten post.content}} ...
-  </div>
-</div>
+</article>
 {{yield}}
