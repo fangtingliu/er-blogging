@@ -1,0 +1,14 @@
+.upload-form {
+  #fileupload {
+    padding-top: 5px;
+    padding-left: 1px;
+    border: none;
+  }
+}
+
+.upload-progress-container {
+  visibility: hidden;
+  #upload-preview, img {
+    width: 50px;
+  }
+}
