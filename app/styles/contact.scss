@@ -7,8 +7,12 @@
 }
 
 .upload-progress-container {
-  visibility: hidden;
+  display: none;
   #upload-preview, img {
     width: 50px;
   }
+}
+
+#statusMessage {
+  padding-top: 10px;
 }

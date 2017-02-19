@@ -8,7 +8,7 @@ export default Ember.Component.extend({
     deleteFile() {
       this.set('data', null);
       this.set('upload', null);
-      this.$('.upload-progress-container').css('visibility', 'hidden');
+      this.$('.upload-progress-container').css('display', 'none');
     }
   },
   didInsertElement: function() {
@@ -23,24 +23,27 @@ export default Ember.Component.extend({
     }
 
     $("#fileupload").change(function () {
-      console.log('listener fileupload')
       readURL(this);
     });
 
     const component = this;
     this.$('#fileupload').fileupload({
-      url: '/fakeurl.com',
+      url: 'http://localhost:3000/api/messages',
       method: 'post',
       add (e, data) {
         component.set('data', data);
         if (data.files.length) {
-          component.$('.upload-progress-container').css('visibility', 'visible');
+          component.$('.upload-progress-container').css('display', 'block');
           component.set('upload', data.files[0]);
           component.sendAction('addFile', data);
         }
       },
       done (e, data) {
-        console.log('done in fileupload: ', data)
+        component.set('status.success', true);
+        component.actions.deleteFile.bind(component)();
+      },
+      fail (e, data) {
+        component.set('fail', true);
       }
     });
   }
