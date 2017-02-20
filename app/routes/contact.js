@@ -7,19 +7,24 @@ export default Ember.Route.extend({
   },
   actions: {
     postMessage(record) {
-      const file = this.get('file');
+      // this.controller.actions.clearStatus();
+      const route = this;
+      const file = route.get('file');
       if (file) {
-        this.get('file').formData = {
+        route.get('file').formData = {
           data: JSON.stringify(record.serialize().data)
         }
-        this.get('file').submit();
+        route.get('file').submit();
       } else {
         record.save();
+        this.controller.set('model',  this.get('store').createRecord('message'));
       }
-      this.controller.set('model',  this.get('store').createRecord('message'));
     },
-    addFile(file) {
+    fileAction(file) {
       this.set('file', file);
+    },
+    messageSendSucceed() {
+      this.controller.set('model',  this.get('store').createRecord('message'));
     }
   }
 });

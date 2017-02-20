@@ -9,6 +9,8 @@ export default Ember.Component.extend({
       this.set('data', null);
       this.set('upload', null);
       this.$('.upload-progress-container').css('display', 'none');
+      this.sendAction('fileAction', null);
+      this.set('status.fail', false);
     }
   },
   didInsertElement: function() {
@@ -35,15 +37,16 @@ export default Ember.Component.extend({
         if (data.files.length) {
           component.$('.upload-progress-container').css('display', 'block');
           component.set('upload', data.files[0]);
-          component.sendAction('addFile', data);
+          component.sendAction('fileAction', data);
         }
       },
       done (e, data) {
         component.set('status.success', true);
         component.actions.deleteFile.bind(component)();
+        component.sendAction('messageSendSucceed');
       },
       fail (e, data) {
-        component.set('fail', true);
+        component.set('status.fail', true);
       }
     });
   }
