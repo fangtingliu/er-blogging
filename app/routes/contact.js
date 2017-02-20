@@ -7,17 +7,18 @@ export default Ember.Route.extend({
   },
   actions: {
     postMessage(record) {
-      // this.controller.actions.clearStatus();
+      this.controller.send('clearStatus');
       const route = this;
       const file = route.get('file');
       if (file) {
         route.get('file').formData = {
           data: JSON.stringify(record.serialize().data)
-        }
+        };
         route.get('file').submit();
       } else {
         record.save();
         this.controller.set('model',  this.get('store').createRecord('message'));
+        this.controller.send('updateStatus', 'succeed');
       }
     },
     fileAction(file) {

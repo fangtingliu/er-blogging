@@ -7,11 +7,15 @@ export default Ember.Controller.extend({
   },
   actions: {
     clearStatus() {
-      console.log('this in controller: ', this.set)
       this.set('status', {
         success: false,
         fail: false
       });
+    },
+    updateStatus(status) {
+      if (status === 'succeed') {
+        this.set('status.success', true);
+      }
     }
   }
 });

@@ -10,26 +10,26 @@ export default Ember.Component.extend({
       this.set('upload', null);
       this.$('.upload-progress-container').css('display', 'none');
       this.sendAction('fileAction', null);
-      this.set('status.fail', false);
+      this.sendAction('clearStatus');
     }
   },
   didInsertElement: function() {
+    const component = this;
     function readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-          $('#upload-preview').attr('src', e.target.result);
-        }
+          component.$('#upload-preview').attr('src', e.target.result);
+        };
         reader.readAsDataURL(input.files[0]);
       }
     }
 
-    $("#fileupload").change(function () {
+    component.$("#fileupload").change(function () {
       readURL(this);
     });
 
-    const component = this;
-    this.$('#fileupload').fileupload({
+    component.$('#fileupload').fileupload({
       url: 'http://localhost:3000/api/messages',
       method: 'post',
       add (e, data) {
