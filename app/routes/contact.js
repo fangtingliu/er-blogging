@@ -16,9 +16,14 @@ export default Ember.Route.extend({
         };
         route.get('file').submit();
       } else {
-        record.save();
-        this.controller.set('model',  this.get('store').createRecord('message'));
-        this.controller.send('updateStatus', 'succeed');
+        record.save().then(() => {
+          route.controller.set('model',  route.get('store').createRecord('message'));
+          route.controller.send('updateStatus', 'succeed');
+          }, function() {
+            console.log('Message failed')
+            route.controller.send('updateStatus', 'failure');
+          }
+        )
       }
     },
     fileAction(file) {

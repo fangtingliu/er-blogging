@@ -28,10 +28,16 @@ export default Ember.Component.extend({
     component.$("#fileupload").change(function () {
       readURL(this);
     });
+    component.$(".upload-form button.btn-for-file-upload").click(function () {
+      event.preventDefault();
+      component.$("#fileupload").trigger('click');
+    });
 
     component.$('#fileupload').fileupload({
       url: 'http://localhost:3000/api/messages',
       method: 'post',
+      replaceFileInput: false,
+      fileInput: component.$("input:file"),
       add (e, data) {
         component.set('data', data);
         if (data.files.length) {

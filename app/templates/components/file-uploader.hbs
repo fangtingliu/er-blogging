@@ -1,6 +1,7 @@
 <form class="upload-form">
   <textarea class="form-control" placeholder="Drag file to upload"></textarea>
-  <input class="btn" type="file" name="files[]" id="fileupload" multiple>
+  <input class="btn" title=" " type="file" name="files[]" id="fileupload" multiple>
+  <button for="files" class="btn btn-secondary btn-sm btn-for-file-upload">Select file</button>
 </form>
 
 <div class="upload-progress-container">
@@ -10,7 +11,6 @@
         <th class="col-xs-2">Name</th>
         <th class="col-xs-2">Type</th>
         <th class="col-xs-3">Size</th>
-        <th class="col-xs-3">Status</th>
         <th class="col-xs-3">Preview</th>
         <th class="col-xs-3"></th>
       </tr>
@@ -20,7 +20,6 @@
         <td>{{upload.name}}</td>
         <td>{{upload.type}}</td>
         <td>{{upload.size}}</td>
-        <td>{{upload.status}}</td>
         <td><img id="upload-preview" src="http://placehold.it/100x100" alt="no image" /></td>
         <td><button class="btn btn-danger" {{action "deleteFile" }}>delete</button></td>
       </tr>

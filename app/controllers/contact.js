@@ -15,6 +15,8 @@ export default Ember.Controller.extend({
     updateStatus(status) {
       if (status === 'succeed') {
         this.set('status.success', true);
+      } else if (status === 'failure'){
+        this.set('status.fail', true);
       }
     }
   }
