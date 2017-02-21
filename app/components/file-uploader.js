@@ -15,30 +15,21 @@ export default Ember.Component.extend({
   },
   didInsertElement: function() {
     const component = this;
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          component.$('#upload-preview').attr('src', e.target.result);
-        };
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-
-    component.$("#fileupload").change(function () {
-      readURL(this);
-    });
-    component.$(".upload-form button.btn-for-file-upload").click(function () {
-      event.preventDefault();
-      component.$("#fileupload").trigger('click');
-    });
 
     component.$('#fileupload').fileupload({
       url: 'http://localhost:3000/api/messages',
       method: 'post',
+      dropZone: $('#dropzone'),
       replaceFileInput: false,
       fileInput: component.$("input:file"),
       add (e, data) {
+        if (data.files && data.files[0]) {
+          var reader = new FileReader();
+          reader.addEventListener("load", function () {
+            component.$('#upload-preview').attr('src', reader.result);
+          }, false);
+          reader.readAsDataURL(data.files[0]);
+        }
         component.set('data', data);
         if (data.files.length) {
           component.$('.upload-progress-container').css('display', 'block');

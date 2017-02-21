@@ -5,8 +5,12 @@
     border: none;
     display: none;
   }
-  .btn-for-file-upload {
+
+  .label-for-file-upload {
     margin-top: 5px;
+    padding-top: 3px;
+    background-color: lightgray;
+    height: 25px;
   }
 }
 

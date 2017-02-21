@@ -21,10 +21,10 @@
 
 <p id="statusMessage">
   {{#if status.success}}
-    Success
+    <p class="alert alert-success fade in">Successfully submitted message. MsCoding will be in contact in no time!</p>
   {{else}}
     {{#if status.fail}}
-      "Sorry, something went wrong!"
+    <p class="alert alert-warning fade in">Sorry, something went wrong!</p>
     {{/if}}
   {{/if}}
 </p>
