@@ -7,9 +7,7 @@
   </div>
 
   <div class="col-md-8 posts">
-    {{#each model as |postUnit|}}
-      {{post-list post=postUnit}}
-    {{/each}}
+    {{post-list posts=model}}
   </div>
 </div>
 {{outlet}}

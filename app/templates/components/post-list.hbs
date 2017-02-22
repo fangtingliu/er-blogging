@@ -1,23 +1,26 @@
-<article class="post-list">
-  <h3 class="post-title">
-    {{#link-to "posts.show" post}}
+{{#each posts as |post|}}
+  <article class="post-list">
+    <h3 class="post-title">
+      {{#link-to "posts.show" post}}
       <em>{{post-text-shorten post.title "title"}}</em>
-    {{/link-to}}
-  </h3>
-  <div class="post-info">
-    <em class="post-info-sec">{{date-formatter post.updatedAt}} </em>
-    <span class="post-info-sec">Author: </span>
-    {{post.author}}
-    <span class="post-info-sec">Category: </span>
-    {{post.category}} - {{post.tags}}
-    <span class="post-info-sec"><i class="fa fa-comments" aria-hidden="true"></i>: {{post.comments.length}}</span>
-  </div>
-
-  <div class="post-content">
-    <div class="row">
-      <img src={{post.image}} class="col-md-2">
-      <div class="content-short col-md-10">{{post-text-shorten post.content "content"}} ...</div>
+      {{/link-to}}
+    </h3>
+    <div class="post-info">
+      <em class="post-info-sec">{{date-formatter post.updatedAt}} </em>
+      <span class="post-info-sec">Author: </span>
+      {{post.author}}
+      <span class="post-info-sec">Category: </span>
+      {{post.category}} - {{post.tags}}
+      <span class="post-info-sec"><i class="fa fa-comments" aria-hidden="true"></i>: {{post.comments.length}}</span>
     </div>
-  </div>
-</article>
+
+    <div class="post-content">
+      <div class="row">
+        <img src={{post.image}} class="col-md-2">
+        <div class="content-short col-md-10">{{post-text-shorten post.content "content"}} ...</div>
+      </div>
+    </div>
+  </article>
+{{/each}}
+
 {{yield}}

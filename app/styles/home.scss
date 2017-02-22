@@ -1,12 +1,12 @@
 .home {
-  @import "posts";
+  @import "post-list";
 
   .intro {
     padding-top:50px;
     font-size: 26px;
     font-family: 'Cabin Sketch', 'Baloo', 'Indie Flower', 'Gloria Hallelujah', cursive,  sans-serif;
   }
-  
+
   .img-container {
     padding-bottom: 20px;
     height: 300px;
