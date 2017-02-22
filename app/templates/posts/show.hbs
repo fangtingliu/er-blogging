@@ -1,0 +1,17 @@
+<div class='post'>
+  <h1 class="post-title"><em>{{model.title}}</em></h1>
+  <div class="post-info row">
+    <em class="post-info-sec col-md-3">{{model.updatedAt}} </em>
+    <span class="post-info-sec col-md-2">Author: {{model.author}}</span>
+    <span class="post-info-sec col-md-7">Category: {{model.category}} - {{model.tags}}</span>
+  </div>
+
+  <div class="post-content">
+    <div class="row">
+      <img src={{model.image}} class="col-md-2">
+      <div class="content-short col-md-10" editStyle="markdown-style">{{post-content-formatter model.content}}</div>
+    </div>
+  </div>
+</div>
+
+{{outlet}}

@@ -1,5 +1,9 @@
 <article class="post-list">
-  <h3 class="post-title"><em>{{post-text-shorten post.title "title"}}</em></h3>
+  <h3 class="post-title">
+    {{#link-to "posts.show" post}}
+      <em>{{post-text-shorten post.title "title"}}</em>
+    {{/link-to}}
+  </h3>
   <div class="post-info">
     <em class="post-info-sec">{{post.updatedAt}} </em>
     <span class="post-info-sec">Author: </span>

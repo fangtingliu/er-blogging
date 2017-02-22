@@ -1,0 +1,16 @@
+// @import "post-list";
+
+.post {
+  padding-top: 20px;
+  font-family: 'Baloo', 'Indie Flower', 'Gloria Hallelujah', cursive,  sans-serif;
+  .post-info {
+    font-size: 16px;
+    font-family: 'Cabin Sketch', sans-serif;
+  }
+
+  .post-content {
+    font-family: cursive,  sans-serif;
+    font-size: 18px;
+    padding-top: 20px;
+  }
+}
