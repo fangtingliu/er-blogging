@@ -1,6 +1,5 @@
 import Ember from 'ember';
 
-
 export function postContentFormatter([content]/*, hash*/) {
   if (/\<p\>/.test(content)) {
     return content;

@@ -3,6 +3,7 @@
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "blueimp-file-upload": "^9.16.0",
-    "components-font-awesome": "^4.7.0"
+    "components-font-awesome": "^4.7.0",
+    "moment": "^2.17.1"
   }
 }

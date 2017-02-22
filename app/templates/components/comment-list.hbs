@@ -1,9 +1,13 @@
-<article class="comment-list">
-  <div class="comment-info-sec">
-    <span><strong>{{comment.name}}</strong></span>
-    <span>—</span>
-    <span>{{comment.createdAt}}</span>
-  </div>
-  <div>{{comment.comment}}</div>
-</article>
+<div class="post-comments">
+  {{#each comments as |comment|}}
+  <article class="comment-list">
+    <div class="comment-info-sec">
+      <span><strong>{{comment.name}}</strong></span>
+      <span>—</span>
+      <span>{{date-formatter comment.createdAt}}</span>
+    </div>
+    <div>{{comment.comment}}</div>
+  </article>
+  {{/each}}
+</div>
 {{yield}}

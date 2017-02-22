@@ -1,7 +1,7 @@
 <div class='post'>
   <h1 class="post-title"><em>{{model.title}}</em></h1>
   <div class="post-info row">
-    <em class="post-info-sec col-md-3">{{model.updatedAt}} </em>
+    <em class="post-info-sec col-md-3">{{date-formatter model.updatedAt}} </em>
     <span class="post-info-sec col-md-2">Author: {{model.author}}</span>
     <span class="post-info-sec col-md-1"><i class="fa fa-comments" aria-hidden="true"></i>: {{model.comments.length}}</span>
     <span class="post-info-sec col-md-6">Category: {{model.category}} - {{model.tags}}</span>
@@ -26,12 +26,7 @@
     </div>
   </form>
 
-  <!-- <p class="comments-divider">{{model.comments.length}} comments</p> -->
-  <div class="post-comments">
-    {{#each model.comments as |comment|}}
-    {{comment-list comment=comment}}
-    {{/each}}
-  </div>
+  {{comment-list comments=model.comments}}
 </div>
 
 {{outlet}}

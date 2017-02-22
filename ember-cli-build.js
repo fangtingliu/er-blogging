@@ -26,6 +26,8 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
   app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.js');
 
+  app.import('bower_components/moment/moment.js');
+
   // file upload test
   app.import('bower_components/blueimp-file-upload/js/cors/jquery.postmessage-transport.js');
   app.import('bower_components/blueimp-file-upload/js/cors/jquery.postmessage-transport.js');
