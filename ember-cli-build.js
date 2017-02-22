@@ -34,6 +34,13 @@ module.exports = function(defaults) {
   app.import('bower_components/blueimp-file-upload/js/jquery.fileupload.js');
   app.import('bower_components/blueimp-file-upload/js/jquery.fileupload-process.js');
   app.import('bower_components/blueimp-file-upload/js/jquery.fileupload-image.js');
+  app.import('bower_components/components-font-awesome/css/font-awesome.css');
+  app.import('bower_components/components-font-awesome/fonts/fontawesome-webfont.svg', {destDir:'fonts'});
+  app.import('bower_components/components-font-awesome/fonts/fontawesome-webfont.eot', {destDir:'fonts'});
+  app.import('bower_components/components-font-awesome/fonts/fontawesome-webfont.ttf', {destDir:'fonts'});
+  app.import('bower_components/components-font-awesome/fonts/fontawesome-webfont.woff', {destDir: 'fonts'});
+  app.import('bower_components/components-font-awesome/fonts/fontawesome-webfont.woff2', {destDir: 'fonts'});
+  app.import('bower_components/components-font-awesome/fonts/FontAwesome.otf', {destDir: 'fonts'});
 
   return app.toTree();
 };

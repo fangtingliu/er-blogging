@@ -2,6 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
-    return this.get('store').findAll('post');
+    const posts = this.get('store').findAll('post');
+    
+    console.log('posts in route posts index: ', posts)
+    return posts;
   }
 });

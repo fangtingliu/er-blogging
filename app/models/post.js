@@ -7,5 +7,6 @@ export default DS.Model.extend({
   content: DS.attr(),
   image: DS.attr(),
   tags: DS.attr('array'),
-  updatedAt: DS.attr()
+  updatedAt: DS.attr(),
+  comments: DS.hasMany('comment', {async: true})
 });

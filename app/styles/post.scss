@@ -1,6 +1,8 @@
 // @import "post-list";
 
 .post {
+  @import 'comment-list';
+
   padding-top: 20px;
   font-family: 'Baloo', 'Indie Flower', 'Gloria Hallelujah', cursive,  sans-serif;
   .post-info {
@@ -16,5 +18,25 @@
 
   p {
     padding-bottom: 10px;
+  }
+
+  p.comments-divider {
+    padding-top: 20px;
+    border-bottom: 2px solid lightgray;
+    padding-bottom: none;
+  }
+
+  .post-comments {
+    padding-top: 10px;
+  }
+
+  .comment-form {
+    .comment-input {
+      font-family: cursive,  sans-serif;
+    }
+
+    button {
+      float: right;
+    }
   }
 }

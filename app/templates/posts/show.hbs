@@ -3,7 +3,8 @@
   <div class="post-info row">
     <em class="post-info-sec col-md-3">{{model.updatedAt}} </em>
     <span class="post-info-sec col-md-2">Author: {{model.author}}</span>
-    <span class="post-info-sec col-md-7">Category: {{model.category}} - {{model.tags}}</span>
+    <span class="post-info-sec col-md-1"><i class="fa fa-comments" aria-hidden="true"></i>: {{model.comments.length}}</span>
+    <span class="post-info-sec col-md-6">Category: {{model.category}} - {{model.tags}}</span>
   </div>
 
   <div class="post-content">
@@ -11,6 +12,25 @@
       <img src={{model.image}} class="col-md-2">
       <div class="content-short col-md-10">{{post-content-formatter model.content}}</div>
     </div>
+  </div>
+
+  <p class="comments-divider">Comments</p>
+  <form class="comment-form">
+    <div class="form-group comment-input">
+      {{textarea value=comment class="form-control" placeholder="Leave your comment here ..." required=true}}
+    </div>
+    <div class="form-group form-inline commentter-info">
+      {{input value=name type="text" class="form-control comment-input" placeholder="name (required)" required=true}}
+      {{input value=email type="email" class="form-control comment-input" placeholder="email (required)" required=true}}
+      <button type="submit" class="btn btn-success" {{action "submitComment"}}>Submit</button>
+    </div>
+  </form>
+
+  <!-- <p class="comments-divider">{{model.comments.length}} comments</p> -->
+  <div class="post-comments">
+    {{#each model.comments as |comment|}}
+    {{comment-list comment=comment}}
+    {{/each}}
   </div>
 </div>
 
