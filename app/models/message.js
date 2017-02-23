@@ -5,5 +5,6 @@ export default DS.Model.extend({
   email: DS.attr(),
   message: DS.attr(),
   file: DS.attr(),
-  user_id: DS.attr()
+  read: DS.attr(),
+  createdAt: DS.attr()
 });

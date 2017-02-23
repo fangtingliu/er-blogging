@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('posts', function() {
     this.route('show', {path: '/:post_id'});
   });
+  this.route('messages');
 });
 
 export default Router;

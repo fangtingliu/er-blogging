@@ -1,0 +1,29 @@
+<div class="messages">
+  {{#each model as |message|}}
+    {{#unless message.read}}
+      <div class="message">
+
+        <div class="comment-info-sec">
+          <span><strong>{{message.name}}</strong></span>
+          <span>—</span>
+          <span>{{date-formatter message.createdAt}}</span>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div>{{message.message}}</div>
+            <button class="btn btn-warning btn-sm" type="button"{{action "readMessage" message}}>
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="col-md-6">
+            {{message.file}}
+          </div>
+        </div>
+
+        <div>{{message.read}}</div>
+      </div>
+    {{/unless}}
+  {{/each}}
+</div>
+{{outlet}}
