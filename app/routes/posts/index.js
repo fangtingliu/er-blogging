@@ -7,7 +7,12 @@ export default Ember.Route.extend({
     }
   },
   model(params) {
-    console.log('params in model index rpute posts: ', params)
     return this.get('store').query('post', params);
+  },
+  resetController: function (controller) {
+    var queryParams = controller.get('queryParams');
+    queryParams.forEach(function (param) {
+      controller.set(param, '');
+    });
   }
 });
