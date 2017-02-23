@@ -1,29 +1,33 @@
 <div class="messages">
+  <ul class="nav nav-tabs">
+    <li {{action "getMessageWithQuery" "false"}} id="unread"><a>Unread ({{model.length}})</a></li>
+    <li {{action "getMessageWithQuery" "true"}} id="read"><a>Read</a></li>
+    <li {{action "getMessageWithQuery" "all"}} id="all"><a>All</a></li>
+  </ul>
   {{#each model as |message|}}
-    {{#unless message.read}}
-      <div class="message">
+    <div class="message" data-toggle="collapse" data-target="#message{{message.id}}" aria-expanded="false">
 
-        <div class="comment-info-sec">
-          <span><strong>{{message.name}}</strong></span>
-          <span>—</span>
-          <span>{{date-formatter message.createdAt}}</span>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <div>{{message.message}}</div>
-            <button class="btn btn-warning btn-sm" type="button"{{action "readMessage" message}}>
-              <i class="fa fa-check" aria-hidden="true"></i>
-            </button>
-          </div>
-          <div class="col-md-6">
-            {{message.file}}
-          </div>
-        </div>
-
-        <div>{{message.read}}</div>
+      <div class="comment-info-sec">
+        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+        <span><strong>{{message.name}}</strong></span>
+        <span>—</span>
+        <span>{{date-formatter message.createdAt}}</span>
       </div>
-    {{/unless}}
+
+      <div class="row message-details collapse" id="message{{message.id}}">
+        <div class="col-md-6">
+          <div>{{message.message}}</div>
+          <button class="btn btn-warning btn-sm" type="button"{{action "readMessage" message}}>
+            <i class="fa fa-check" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="col-md-6">
+          {{message.file}}
+        </div>
+      </div>
+
+      <div>{{message.read}}</div>
+    </div>
   {{/each}}
 </div>
 {{outlet}}
