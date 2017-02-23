@@ -1,6 +1,10 @@
 .home {
   @import "post-list";
 
+  .search-articles {
+    padding-top: 20px;
+  }
+
   .intro {
     padding-top:50px;
     font-size: 26px;

@@ -1,4 +1,13 @@
 <div class="home">
+  <div class="input-group search-articles">
+    {{input type="text" value=search class="form-control" placeholder="Search title / author / category"}}
+    <span class="input-group-btn">
+      <button class="btn btn-danger" type="button">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button>
+    </span>
+  </div>
+
   <div class="posts">
     {{post-list posts=model}}
   </div>
