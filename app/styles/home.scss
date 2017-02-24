@@ -5,6 +5,21 @@
     padding-top: 20px;
   }
 
+  .search-clicks {
+    font-family: 'Cabin Sketch', 'Baloo', 'Indie Flower', 'Gloria Hallelujah', cursive,  sans-serif;
+    padding-top: 10px;
+    display: flex;
+
+    .search-click-item {
+      padding-left: 20px;
+      cursor: pointer;
+    }
+
+    .clear-all {
+      color: red
+    }
+  }
+
   .intro {
     padding-top:50px;
     font-size: 26px;

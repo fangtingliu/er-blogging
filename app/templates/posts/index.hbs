@@ -8,6 +8,13 @@
     </span>
   </div>
 
+  <div class="search-clicks">
+    Quick search:
+    <span class="search-click-item" {{action "setSearchQuery" "financial"}}>financial</span>
+    <span class="search-click-item" {{action "setSearchQuery" "coding"}}>coding</span>
+    <span class="search-click-item clear-all" {{action "setSearchQuery" ""}}>clear all</span>
+  </div>
+
   <div class="posts">
     {{post-list posts=model}}
   </div>
