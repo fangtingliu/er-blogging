@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  ajax: Ember.inject.service(),
   queryParams: {
     read: {
       refreshModel: true
@@ -16,7 +17,6 @@ export default Ember.Route.extend({
   actions: {
     readMessage(message) {
       const route = this;
-      console.log('readMessage message: ', message);
       message.set('read', true);
       message.save().then(function() {
         route.store.unloadRecord(message);
@@ -29,6 +29,24 @@ export default Ember.Route.extend({
         controller.set('read', 'all');
       } else {
         controller.set('read', read);
+      }
+    },
+    getMessageImage(message) {
+      const route = this;
+      console.log("getMessageImage: ", message);
+      const id = message.id;
+      const file = message.get('file');
+      if (file && !/http/.test(file)) {
+        route.get('ajax').request(`${route.get('applicationState').devBaseUrl}messages/image`, {
+          method: 'GET',
+          data: {
+            id: id,
+            image: true
+          }
+        }).then(function(obj){
+          console.log('then obj: ', obj)
+          message.set('file', obj.url)
+        });
       }
     }
   }

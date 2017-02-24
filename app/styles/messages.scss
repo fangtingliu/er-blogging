@@ -38,6 +38,9 @@
     padding: 5px;
     margin-top: 5px;
     background-color: white;
-    // background-color: #d1c3b5;
+
+    .message-image {
+      max-height: 100px;
+    }
   }
 }

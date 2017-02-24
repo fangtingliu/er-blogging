@@ -17,7 +17,7 @@
     </li>
   </ul>
   {{#each model as |message|}}
-    <div class="message" data-toggle="collapse" data-target="#message{{message.id}}" aria-expanded="false">
+    <div class="message" data-toggle="collapse" data-target="#message{{message.id}}" aria-expanded="false" {{action "getMessageImage" message}}>
 
       <div class="comment-info-sec">
         <i class="fa fa-commenting-o" aria-hidden="true"></i>
@@ -34,7 +34,8 @@
           </button>
         </div>
         <div class="col-md-6">
-          {{message.file}}
+          <p>File</p>
+          <img src={{message.file}} class="message-image"/>
         </div>
       </div>
 
