@@ -27,19 +27,17 @@
       </div>
 
       <div class="row message-details collapse" id="message{{message.id}}">
-        <div class="col-md-6">
+        <div class="col-md-4 message-text">
           <div>{{message.message}}</div>
-          <button class="btn btn-warning btn-sm" type="button"{{action "readMessage" message}}>
-            <i class="fa fa-check" aria-hidden="true"></i>
-          </button>
         </div>
-        <div class="col-md-6">
-          <p>File</p>
+        <div class="col-md-4">
           <img src={{message.filePath}} class="message-image"/>
         </div>
+        <button class="btn btn-warning btn-sm col-md-2" type="button"{{action "readMessage" message}}>
+          <i class="fa fa-check" aria-hidden="true"> Mark as Read</i>
+        </button>
       </div>
 
-      <div>{{message.read}}</div>
     </div>
   {{/each}}
 </div>

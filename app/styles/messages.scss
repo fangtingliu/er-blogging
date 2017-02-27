@@ -33,14 +33,29 @@
     }
   }
 
-  .message{
+  .message {
+
     cursor: pointer;
     padding: 5px;
     margin-top: 5px;
     background-color: white;
 
     .message-image {
-      max-height: 100px;
+      max-height: 200px;
     }
+
+    .message-details {
+      font-family: 'Gloria Hallelujah', cursive;
+      padding-top: 10px;
+      text-align: center;
+      .message-text {
+        text-align: left;
+        padding-left: 50px;
+        padding-right: 10px;
+      }
+    }
+  }
+
+  .message-btn-group {
   }
 }
