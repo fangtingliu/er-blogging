@@ -11,7 +11,7 @@ Router.map(function() {
   this.route('contact');
   this.route('posts', function() {
     this.route('show', {path: '/:post_id'});
-    this.route('create');
+    this.route('create', {path: '/create'});
   });
   this.route('messages');
 });

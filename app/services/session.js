@@ -1,5 +1,6 @@
 import Ember from 'ember';
-import ENV from '../config/environment'
+import ENV from '../config/environment';
+
 export default Ember.Service.extend({
   screenWidth:screen.width,
   screenHeight:screen.height,

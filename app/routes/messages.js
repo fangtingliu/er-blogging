@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ENV from '../config/environment';
 import Auth from '../mixins/auth';
 
 export default Ember.Route.extend(Auth, {

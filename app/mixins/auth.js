@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Mixin.create({
   beforeModel:function(route){
     console.log('mixin auth beforemodel');
-    const routeName = route.targetName;
+    const routeName = route.targetName.split('.').join('/');
     const applicationState = this.get("applicationState");
     var sessionObject = this.get("session");
     const store=this.get("store")
