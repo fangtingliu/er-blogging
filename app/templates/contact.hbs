@@ -1,5 +1,5 @@
-<h1>Contact</h1>
 <form class="contact" {{action "postMessage" model on="submit"}}>
+  <h1>Contact</h1>
   <div class="form-group">
     <label>Name</label>
     {{input value=model.name type="text" class="form-control" required=true}}
@@ -16,7 +16,7 @@
     <label>File</label>
     {{file-uploader fileAction="fileAction" status=status messageSendSucceed="messageSendSucceed"}}
   </div>
-  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="submit" class="btn btn-lg col-md-12 btn-success submit">Submit</button>
 </form>
 
 <p id="statusMessage">
