@@ -2,3 +2,12 @@
   font-size: 20px;
   padding: 50px;
 }
+
+.map-container {
+  padding: 50px;
+  height: 300px;
+
+  .map {
+    height: 300px;
+  }
+}

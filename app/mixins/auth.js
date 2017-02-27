@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Mixin.create({
   beforeModel:function(route){
+    console.log('mixin auth beforemodel');
     const routeName = route.targetName;
     const applicationState = this.get("applicationState");
     var sessionObject = this.get("session");

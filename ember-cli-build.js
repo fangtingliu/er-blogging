@@ -44,5 +44,7 @@ module.exports = function(defaults) {
   app.import('bower_components/components-font-awesome/fonts/fontawesome-webfont.woff2', {destDir: 'fonts'});
   app.import('bower_components/components-font-awesome/fonts/FontAwesome.otf', {destDir: 'fonts'});
 
+  app.import('vendor/gmaps.js');
+
   return app.toTree();
 };
