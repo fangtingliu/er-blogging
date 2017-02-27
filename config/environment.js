@@ -25,6 +25,7 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.devBaseUrl = 'http://localhost:3000/api/';
+    ENV.devAppUrl = 'http://localhost:4200/';
     ENV['ember-cli-mirage'] = {
       enabled: false
     }

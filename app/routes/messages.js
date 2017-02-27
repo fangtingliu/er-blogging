@@ -6,48 +6,33 @@ export default Ember.Route.extend({
     var applicationState=this.get("applicationState");
     var sessionObject=this.get("session");
     var store=this.get("store")
-    // applicationState.set("displayInterfaceSelector",true);
-    function gup( name, url ) {
-      if (!url) {
-        url = location.href;
-      }
-      name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-      var regexS = "[\\?&]"+name+"=([^&#]*)";
-      var regex = new RegExp( regexS );
-      var results = regex.exec( url );
-      return results == null ? null : results[1];
-    }
-    var redirect_route;
-    if(gup("redirect_route",window.location.href)){
-      redirect_route=gup("redirect_route",window.location.href);
-    }
+    var redirect_route = `${applicationState.get("devAppUrl")}messages`;
+
     $.ajaxSetup({
       xhrFields: {
         withCredentials: true
       }
     });
     Ember.$.ajax({
-      url:applicationState.get("devBaseUrl")+"users/current.json",
-      method:"GET",
-      async:true,
-      success:function(data){
+      url: applicationState.get("devBaseUrl") + "users/current.json",
+      method: "GET",
+      async: true,
+      success: function(data) {
         if(data){
-          var currentUser=store.push(store.normalize("user",data.data));
-          var current_user=sessionObject.set("currentUser",currentUser);
-          sessionObject.notifyPropertyChange("currentUser")
+          var currentUser = store.push(store.normalize("user",data.data));
+          var current_user = sessionObject.set("currentUser",currentUser);
+          sessionObject.notifyPropertyChange("currentUser");
         }
       },
-      error:function(error){
-        if(error.responseJSON.errors.indexOf("not_signed_in")!==-1){
-          console.log("hi")
-          if(ENV.environment==="production"){
-            // window.location.href="https://toolbelt.kaufmanrossin.com/api/bpa/doorkeeper_in_between?redirect_route="+redirect_route;
-          }else{
-            window.location.href="http://localhost:3000/api/doorkeeper_in_between?redirect_route="+redirect_route;
-          }
-        }else if(error.responseJSON.errors.indexOf("not_authorized")!==-1){
+      error: function(error) {
+        // TODO: user nodel has extra field, i.e. pageView, needs to be fix with server user session
+        console.log("hi in auth before model message route ajax error callback error: ", error);
+        if (error.responseJSON.errors.indexOf("not_signed_in") !== -1) {
+          window.location.href = `${applicationState.get("devBaseUrl")}doorkeeper_in_between?redirect_route=${redirect_route}`;
+          //  http://localhost:3000/api/doorkeeper_in_between?redirect_route="+redirect_route;
+        } else if(error.responseJSON.errors.indexOf("not_authorized") !== -1) {
           sessionObject.get("notAuthorizedSignOut")();
-        }else{
+        } else {
           console.log(error);
         }
       }

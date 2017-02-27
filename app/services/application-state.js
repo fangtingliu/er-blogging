@@ -4,5 +4,6 @@ import ENV from '../config/environment';
 
 export default Ember.Service.extend({
   rootURL: ENV.rootURL,
-  devBaseUrl: ENV.devBaseUrl
+  devBaseUrl: ENV.devBaseUrl,
+  devAppUrl: ENV.devAppUrl
 });
