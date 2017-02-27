@@ -14,7 +14,7 @@ export default Ember.Route.extend({
       }
     });
     Ember.$.ajax({
-      url: applicationState.get("devBaseUrl") + "users/current.json",
+      url: `${applicationState.get("devBaseUrl")}users/current.json`,
       method: "GET",
       async: true,
       success: function(data) {
@@ -25,12 +25,9 @@ export default Ember.Route.extend({
         }
       },
       error: function(error) {
-        // TODO: user nodel has extra field, i.e. pageView, needs to be fix with server user session
-        console.log("hi in auth before model message route ajax error callback error: ", error);
         if (error.responseJSON.errors.indexOf("not_signed_in") !== -1) {
           window.location.href = `${applicationState.get("devBaseUrl")}doorkeeper_in_between?redirect_route=${redirect_route}`;
-          //  http://localhost:3000/api/doorkeeper_in_between?redirect_route="+redirect_route;
-        } else if(error.responseJSON.errors.indexOf("not_authorized") !== -1) {
+        } else if (error.responseJSON.errors.indexOf("not_authorized") !== -1) {
           sessionObject.get("notAuthorizedSignOut")();
         } else {
           console.log(error);
@@ -70,7 +67,6 @@ export default Ember.Route.extend({
     },
     getMessageImage(message) {
       const route = this;
-      console.log("getMessageImage: ", message);
       const id = message.id;
       const file = message.get('file');
       if (file && !/http/.test(file)) {
@@ -81,8 +77,7 @@ export default Ember.Route.extend({
             image: true
           }
         }).then(function(obj){
-          console.log('then obj: ', obj)
-          message.set('file', obj.url)
+          message.set('filePath', obj.url)
         });
       }
     }
