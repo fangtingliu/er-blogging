@@ -11,20 +11,22 @@
 @import "contact";
 @import "post";
 
-body {
-  min-height: 100%;
+html, body {
   height: 100%;
+  width: 100%;
 }
 
 .app-container {
   position:relative;
   height:auto !important;
   min-height: 100%;
-
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .app-content {
   font-family: sans-serif, 'Press Start 2P', 'Cabin Sketch', 'Baloo', 'Indie Flower', 'Gloria Hallelujah', cursive;
+  min-height: 100vh;
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 50px;
@@ -33,8 +35,9 @@ body {
 }
 
 .footer {
+  left: 0;
   bottom: 0;
-  position: relative;;
+  position: absolute;;
 	width:100%;
   text-align: center;
   font-size: 12px;
