@@ -13,11 +13,13 @@ export default Ember.Controller.extend({
       });
     },
     updateStatus(status) {
+      const controller = this;
       if (status === 'succeed') {
-        this.set('status.success', true);
+        controller.set('status.success', true);
       } else if (status === 'failure'){
-        this.set('status.fail', true);
+        controller.set('status.fail', true);
       }
+      setTimeout(() => controller.get('actions.clearStatus').bind(controller)(), 5000)
     }
   }
 });
