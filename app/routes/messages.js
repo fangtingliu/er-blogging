@@ -3,8 +3,8 @@ import ENV from '../config/environment';
 
 export default Ember.Route.extend({
   beforeModel:function(){
-    var applicationState=this.get("applicationState");
-    var sessionObject=this.get("session");
+    var applicationState = this.get("applicationState");
+    var sessionObject = this.get("session");
     var store=this.get("store")
     var redirect_route = `${applicationState.get("devAppUrl")}messages`;
 

@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  email:attr(),
+  email: DS.attr(),
   //userClients:DS.hasMany("userClient",{async:true}),
-  admin:attr()
+  admin: DS.attr()
 });
