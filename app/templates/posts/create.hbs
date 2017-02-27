@@ -5,7 +5,7 @@
 
       <div class="row">
         <div class="col-md-8">
-          {{input value=model.author type="email" class="form-control meta" placeholder="Author: Ms. Coding" required=true}}
+          {{input value=model.author type="text" class="form-control meta" placeholder="Author: Ms. Coding" required=true}}
         </div>
         <div class="dropdown col-md-4">
           <button class="btn btn-default dropdown-toggle form-control meta" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -23,6 +23,7 @@
     </div>
     <div class="col-md-4">
       <label>Image</label>
+      {{input value=model.image type="text" class="form-control" placeholder="Image url" required=true}}
       {{file-uploader fileAction="fileAction" status=status messageSendSucceed="messageSendSucceed"}}
     </div>
   </div>
