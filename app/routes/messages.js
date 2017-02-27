@@ -1,40 +1,8 @@
 import Ember from 'ember';
 import ENV from '../config/environment';
+import Auth from '../mixins/auth';
 
-export default Ember.Route.extend({
-  beforeModel:function(){
-    var applicationState = this.get("applicationState");
-    var sessionObject = this.get("session");
-    var store=this.get("store")
-    var redirect_route = `${applicationState.get("devAppUrl")}messages`;
-
-    $.ajaxSetup({
-      xhrFields: {
-        withCredentials: true
-      }
-    });
-    Ember.$.ajax({
-      url: `${applicationState.get("devBaseUrl")}users/current.json`,
-      method: "GET",
-      async: true,
-      success: function(data) {
-        if(data){
-          var currentUser = store.push(store.normalize("user",data.data));
-          var current_user = sessionObject.set("currentUser",currentUser);
-          sessionObject.notifyPropertyChange("currentUser");
-        }
-      },
-      error: function(error) {
-        if (error.responseJSON.errors.indexOf("not_signed_in") !== -1) {
-          window.location.href = `${applicationState.get("devBaseUrl")}doorkeeper_in_between?redirect_route=${redirect_route}`;
-        } else if (error.responseJSON.errors.indexOf("not_authorized") !== -1) {
-          sessionObject.get("notAuthorizedSignOut")();
-        } else {
-          console.log(error);
-        }
-      }
-    });
-  },
+export default Ember.Route.extend(Auth, {
   ajax: Ember.inject.service(),
   queryParams: {
     read: {
