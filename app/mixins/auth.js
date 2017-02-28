@@ -1,12 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-  beforeModel:function(route){
-    console.log('mixin auth beforemodel');
+  beforeModel: function(route) {
     const routeName = route.targetName.split('.').join('/');
     const applicationState = this.get("applicationState");
     var sessionObject = this.get("session");
-    const store=this.get("store")
+    const currentUser = sessionObject.get('currentUser');
+
+    const store = this.get("store")
     const redirect_route = `${applicationState.get("devAppUrl")}${routeName}`;
 
     $.ajaxSetup({

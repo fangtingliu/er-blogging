@@ -17,8 +17,10 @@
           <li>{{#link-to "posts"}}Posts{{/link-to}}</li>
           <li>{{#link-to "contact"}}Contact{{/link-to}}</li>
           <li>{{#link-to "about"}}About{{/link-to}}</li>
-          <li>{{#link-to "messages"}}Messages{{/link-to}}</li>
-          <li>{{#link-to "posts.create"}}Create{{/link-to}}</li>
+          {{#if isAuthenticated}}
+            <li>{{#link-to "messages"}}Messages{{/link-to}}</li>
+            <li>{{#link-to "posts.create"}}Create{{/link-to}}</li>
+          {{/if}}
         </ul>
       </div>
     </div>
