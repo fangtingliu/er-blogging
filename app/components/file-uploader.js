@@ -15,9 +15,17 @@ export default Ember.Component.extend({
   },
   didInsertElement: function() {
     const component = this;
+    const route = component.get('route');
+    const applicationState = component.get("applicationState")
+    let url = applicationState.get('devBaseUrl');
+    if (route === 'messages') {
+      url = `${url}messages`;
+    } else if (route === 'newPost') {
+      url = `${url}posts`;
+    }
 
     component.$('#fileupload').fileupload({
-      url: 'http://localhost:3000/api/messages',
+      url: url,
       method: 'post',
       dropZone: $('#dropzone'),
       replaceFileInput: false,

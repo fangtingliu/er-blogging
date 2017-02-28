@@ -1,7 +1,7 @@
 .new-post-form {
   padding-left: 10%;
   padding-right: 10%;
-  padding-top: 40px;
+  padding-top: 30px;
 
   input.form-control, button.form-control {
     font-size: 16px;
@@ -14,7 +14,7 @@
   }
 
   .content {
-    height: 450px;
+    height: 420px;
   }
 }
 
@@ -27,4 +27,8 @@
   .map {
     height: 400px;
   }
+}
+
+#statusMessage {
+  margin-top: 10px;
 }

@@ -2,36 +2,38 @@ import Ember from 'ember';
 import Auth from '../../mixins/auth';
 
 export default Ember.Route.extend(Auth, {
-  image: null,
+  file: null,
   model() {
     return this.get('store').createRecord('post');
   },
   actions: {
     postPost(record) {
-      // TODO: complete fileupload for post, may need to make changes to fileupload to set url
-      console.log('record in create route: ', record.get('author'))
-      record.save();
-      // this.controller.send('clearStatus');
-      // const route = this;
-      // const file = route.get('image');
-      // if (image) {
-      //   route.get('image').formData = {
-      //     data: JSON.stringify(record.serialize().data)
-      //   };
-      //   route.get('image').submit();
-      // } else {
-      //   record.save().then(() => {
-      //     route.controller.set('model',  route.get('store').createRecord('post'));
-      //     route.controller.send('updateStatus', 'succeed');
-      //     }, function() {
-      //       console.log('Message failed')
-      //       route.controller.send('updateStatus', 'failure');
-      //     }
-      //   )
-      // }
+      const route = this;
+
+      const user = route.get('session').get('currentUser');
+      record.set('user', user);
+
+      const file = route.get('file');
+      if (file) {
+        file.formData = {
+          data: JSON.stringify(record.serialize().data)
+        };
+        file.submit();
+      } else {
+        record.save().then(() => {
+          this.send('messageSendSucceed');
+          route.controller.send('updateStatus', 'succeed');
+        }, function() {
+          console.log('Message failed')
+          route.controller.send('updateStatus', 'failure');
+        });
+      }
+    },
+    categoryChange(cat){
+      this.currentModel.set('category', cat);
     },
     fileAction(file) {
-      this.set('image', file);
+      this.set('file', file);
     },
     messageSendSucceed() {
       this.controller.set('model',  this.get('store').createRecord('message'));

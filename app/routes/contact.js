@@ -7,7 +7,6 @@ export default Ember.Route.extend({
   },
   actions: {
     postMessage(record) {
-      this.controller.send('clearStatus');
       const route = this;
       const file = route.get('file');
       if (file) {
@@ -22,8 +21,7 @@ export default Ember.Route.extend({
           }, function() {
             console.log('Message failed')
             route.controller.send('updateStatus', 'failure');
-          }
-        )
+          });
       }
     },
     fileAction(file) {

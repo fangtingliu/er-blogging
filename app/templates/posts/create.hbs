@@ -9,12 +9,16 @@
         </div>
         <div class="dropdown col-md-4">
           <button class="btn btn-default dropdown-toggle form-control meta" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Category
-            <span class="caret"></span>
+            {{#if model.category}}
+              Category: <strong>{{model.category}}</strong>
+            {{else}}
+              Category
+              <span class="caret"></span>
+            {{/if}}
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#">Coding</a></li>
-            <li><a href="#">Financial</a></li>
+            <li {{action "categoryChange" "coding"}}><a href="#">Coding</a></li>
+            <li {{action "categoryChange" "financial"}}><a href="#">Financial</a></li>
           </ul>
         </div>
       </div>
@@ -23,8 +27,8 @@
     </div>
     <div class="col-md-4">
       <label>Image</label>
-      {{input value=model.image type="text" class="form-control" placeholder="Image url" required=true}}
-      {{file-uploader fileAction="fileAction" status=status messageSendSucceed="messageSendSucceed"}}
+      {{input value=model.image type="text" class="form-control" placeholder="Image url"}}
+      {{file-uploader route="newPost" fileAction="fileAction" status=status messageSendSucceed="messageSendSucceed"}}
     </div>
   </div>
 
@@ -34,3 +38,13 @@
   </div>
   <button type="submit" class="btn btn-lg col-md-12 btn-success submit">Submit</button>
 </form>
+
+<p id="statusMessage">
+  {{#if status.success}}
+    <p class="alert alert-success fade in">Successfully submitted message. MsCoding will be in contact in no time!</p>
+  {{else}}
+    {{#if status.fail}}
+    <p class="alert alert-warning fade in">Sorry, something went wrong!</p>
+    {{/if}}
+  {{/if}}
+</p>
